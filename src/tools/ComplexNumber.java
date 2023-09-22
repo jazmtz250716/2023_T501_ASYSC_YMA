@@ -58,8 +58,9 @@ public class ComplexNumber {
     
     public ComplexNumber mult (ComplexNumber z){
         return new ComplexNumber(
-                this.a * z.a - this.b * z.b,
-                this.a * z.b + this.b * z.a);
+                (this.a * z.a) - (this.b * z.b),
+                (this.a * z.b) + (this.b * z.a)
+        );
     }
     
     public ComplexNumber div(ComplexNumber z){
@@ -81,6 +82,24 @@ public class ComplexNumber {
     public static float angle(ComplexNumber z ){
      return (float)  Math.atan2(z.b, z.a);
     }
+    
+    public ComplexNumber toN(int n){
+        float m = mod();
+        float angle = angle() ;
+        
+        return new ComplexNumber(
+          (float) (Math.pow( m,n) * Math.cos(n *angle)) ,
+          (float)(Math.pow( m,n) * Math.sin(n* angle))
+        );
+               
+    }
+
+    @Override
+    public String toString() {
+        return "ComplexNumber{" + "a=" + a + ", b=" + b + '}';
+    }
+    
+    
         
     
     
